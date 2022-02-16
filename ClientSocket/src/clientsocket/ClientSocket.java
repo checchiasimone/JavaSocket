@@ -24,7 +24,6 @@ public class ClientSocket {
             try {
                 Scanner sc = new Scanner(System.in);
                 Socket clientSocket = new Socket("192.168.56.1", 5000);
-
                 PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
                 BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                 resp = sc.nextLine();

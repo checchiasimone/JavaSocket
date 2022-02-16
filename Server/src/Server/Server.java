@@ -30,7 +30,6 @@ public class Server {
                 clientSocket = serverSocket.accept();
                 out = new PrintWriter(clientSocket.getOutputStream(), true);
                 in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-                out.println("what do you want to do?");
                 String message = in.readLine();
                 if ("fine".equals(message)) {
                     break;
