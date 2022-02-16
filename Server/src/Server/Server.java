@@ -26,15 +26,18 @@ public class Server {
     public static void main(String[] args) {
         try {
             ServerSocket serverSocket = new ServerSocket(port);
-            clientSocket = serverSocket.accept();
-            out = new PrintWriter(clientSocket.getOutputStream(), true);
-            in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-            String greeting = in.readLine();
-            if ("hello server".equals(greeting)) {
-                out.println("hello client");
-            } else {
-                out.println("unrecognised greeting");
-            }
+            do {
+                clientSocket = serverSocket.accept();
+                out = new PrintWriter(clientSocket.getOutputStream(), true);
+                in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+                out.println("what do you want to do?");
+                String message = in.readLine();
+                if ("fine".equals(message)) {
+                    break;
+                } else {
+                    System.out.println(message.toUpperCase());
+                }
+            } while (true);
             in.close();
             out.close();
             clientSocket.close();
